@@ -157,12 +157,12 @@ Sample Output:
 answer:
 
 
+
 n=int(input("enter a number:"))
 i=5
 while i<=n:
     print(i)
     i=i+5
-
 
 
 7. Print Squares from 1 to N
@@ -685,6 +685,8 @@ Sample Output:
 Count = 5
 
 answer:
+
+
 n = int(input("Enter number: "))
 
 i = 1
@@ -696,6 +698,8 @@ while i <= n:
     i += 1
 
 print("Count =", count)
+
+
 
 
 29. Find the Largest Number Until 0
@@ -712,6 +716,7 @@ Sample Output:
 Largest number = 45
 
 answer:
+
 num = int(input("Enter number: "))
 
 largest = 0
@@ -723,6 +728,8 @@ while num != 0:
     num = int(input("Enter number: "))
 
 print("Largest number =", largest)
+
+
 
 
 

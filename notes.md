@@ -132,6 +132,8 @@
             -chk elif number < 0 then display -ve
             -else display zero
 
+
+
             num_chk.py
 
             number = int(input("enter number)) #5
@@ -145,3 +147,58 @@
             
             else:
                 print("zero")
+
+### looping
+
+
+    1)for-loop
+
+        #syntx->
+            for i in sequence:
+            #statement
+
+
+    2)while-loop
+
+        #syntx->
+            #initilaization
+
+            while (condition)
+
+                #statement
+
+                increment/decrement
+
+
+
+### Programming Technique
+
+    1)Procedural programming language
+    2)object oriented language
+
+
+### Functions
+
+there are two types of functions
+
+
+    1)Bulit-in functions
+
+        >print(message,end="")   #display message in console
+        >range(start,stop,step)  #return sequence of numbers froom start to stop
+        >max(seq) # return maximum from seq
+        >min(seq) # return minimum from seq
+        >len(obj) #return length of obj
+        >input(message)  #return value from user as string
+
+    2)user-defined functions
+        we are defining our own functions
+
+        syntax->
+            def function_name(p1,p1......): #function parameter
+
+                function definition
+
+            function_name(a1,a2,.....)     #function calling
+
+            
