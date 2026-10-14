@@ -14,14 +14,18 @@ class MobileListCreateUpdateRetrieveDelete:
 
         self.cursor = self.connection.cursor()
 
-    def post (self,name=None,brand=None,specs=None,price=None,rating=None):
+    def post (self,**kwargs):
 
-            query = """
-                insert into mobile (name,brand,specs,price,rating) values (%s,%s,%s,%s,%s)
+            keys = [k for k in kwargs.keys()]
+
+            place_holder = ",".j(keys)
+
+            query = f"""
+                insert into mobile ({place_holder}) values (%s,%s,%s,%s,%s)
 
             """
 
-            values = [name,brand,specs,price,rating]
+            values = [v for v in kwargs.values()]
 
             self.cursor.execute(query,values)
 
@@ -48,10 +52,19 @@ class MobileListCreateUpdateRetrieveDelete:
 
          print(record)
 
-    def put(self,id=None,specs=None,price=None):
-         query = "update mobile set specs = %s , price = %s where id = %s"
+    def put(self,id=None,**kwargs):
 
-         values = [specs,price,id]
+         
+         place_holder=""
+
+         for k in kwargs.keys():
+              place_holder+=k+"=%s,"
+
+         place_holder = place_holder.rstrip(",")
+         query = f"update mobile set {place_holder} where id = %s"
+
+         values = [v for v in kwargs.values]
+         values.append(id)
 
          self.cursor.execute(query,values)
 

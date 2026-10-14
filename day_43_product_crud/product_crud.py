@@ -13,13 +13,17 @@ class productListCreateUpdateRetrieveDelete:
 
         self.cursor = self.connection.cursor()
 
-    def post (self,title=None,category=None,price=None,rating=None):
+    def post (self,**kwargs):
 
-        query = """
-            insert into product (title,category,price,rating) values (%s,%s,%s,%s)
+        keys = [k for k in kwargs.keys()]
+
+        place_holder=",".join(keys)
+
+        query = f"""
+            insert into product ({place_holder}) values (%s,%s,%s,%s)
         """
 
-        values = [title,category,price,rating]
+        values = [v for v in kwargs.keys()]
 
         self.cursor.execute(query,values)
 
@@ -46,13 +50,21 @@ class productListCreateUpdateRetrieveDelete:
 
         print(record)
 
-    def put(self,id=None,price=None,rating=None):
+    def put(self,id=None,**kwargs):
 
-        query = """
-                update product set price = %s , rating = %s where id = %s
+        place_holder=""
+
+        for k in kwargs.keys():
+            place_holder+=k+"=%s,"
+        
+        place_holder = place_holder.rstrip(",")
+
+        query = f"""
+                update product set {place_holder} where id = %s
             """
 
-        values = [price,rating,id]
+        values = [v for v in kwargs.values]
+        values.append(id)
 
         self.cursor.execute(query,values)
 
